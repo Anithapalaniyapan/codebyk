@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --background: #ffeff5;
+  --foreground: #371b34;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a0f18;
+    --foreground: #ffe5ee;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Soft gradient background layer */
+.romance-bg {
+  background-image: radial-gradient(1000px 600px at 10% -10%, rgba(255, 175, 204, 0.35), transparent),
+    radial-gradient(800px 500px at 90% 10%, rgba(255, 203, 219, 0.35), transparent),
+    radial-gradient(700px 500px at 50% 120%, rgba(255, 160, 190, 0.35), transparent);
+}
+
+/* Typewriter caret */
+@keyframes caretBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.typewriter-caret::after {
+  content: "|";
+  margin-left: 2px;
+  animation: caretBlink 1s step-end infinite;
+}
+
+/* Polaroid style */
+.polaroid {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  padding: 10px 10px 22px;
+}
+.polaroid img {
+  display: block;
+  width: 240px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Floating hearts animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.15);
+    opacity: 0.0;
+  }
+}
+
+.heart {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 18px;
+  height: 18px;
+  background: #ff6b9e;
+  transform: rotate(45deg);
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff6b9e;
+  border-radius: 50%;
+}
+.heart::before {
+  left: -9px;
+}
+.heart::after {
+  top: -9px;
+}
