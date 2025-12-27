@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import clsx from "clsx";
+import Image from "next/image";
 
 const reasons = [
   "Your smile brightens my darkest days",
@@ -354,9 +355,11 @@ export default function Home() {
                 dragMomentum={false}
                 whileTap={{ scale: 1.03 }}
                 className="polaroid absolute"
-                style={{ left: `calc(50% + ${p.x}px)`, top: `calc(50% + ${p.y}px)`, rotate: `${p.r}deg` as any }}
+                style={{ left: `calc(50% + ${p.x}px)`, top: `calc(50% + ${p.y}px)` }}
+                initial={{ rotate: p.r }}
+                animate={{ rotate: p.r }}
               >
-                <img src={p.img} alt={p.title} />
+                <Image src={p.img} alt={p.title} width={240} height={180} className="rounded-lg" />
                 <div className="mt-2 text-center font-medium">{p.title}</div>
               </motion.div>
             ))}
